@@ -1,0 +1,69 @@
+.center {
+    padding-left: calc(50% - 488px);
+    padding-right: calc(50% - 488px);
+}
+.game-box {
+    margin-top: 46px;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 15px;
+}
+.center {
+    padding-left: calc(50% - 488px);
+    padding-right: calc(50% - 488px);
+}
+
+.header {
+    display: flex;
+    margin-top: 22px;
+    justify-content: space-between;
+    align-items: flex-end;
+    &__timer-box {
+        width: 155px;
+        height: 91px;
+    }
+    &__timer-name {
+        margin-left: 35px;
+        color: #fff;
+        font-variant-numeric: lining-nums proportional-nums;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 32px;
+    }
+    &__name-box {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__timer {
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 72px;
+        color: #fff;
+    }
+}
+
+.header-game-button {
+    width: 246px;
+    height: 50px;
+    border-radius: 12px;
+    border: none;
+    background-color: #7ac100;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #fff;
+    cursor: pointer;
+}
+.game-field {
+    margin-left: calc(50% - 400px);
+    margin-right: calc(50% - 400px);
+    max-width: 800px;
+    margin-top: 46px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
