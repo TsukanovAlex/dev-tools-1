@@ -67,3 +67,4 @@ startButtonEl.addEventListener('click', () => {
         alert('Пожалуйста, выберите уровень сложности')
     }
 })
+
