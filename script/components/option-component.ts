@@ -1,4 +1,3 @@
-
 // Перемешивает карты
 function shuffle(array) {
     let currentIndex = array.length,
@@ -15,11 +14,11 @@ function shuffle(array) {
     return array
 }
 
-// СОздаем массив из карт
+// Создаем массив из карт
 export const createCardArray = (level) => {
-    let cardArray = []
+    let cardArray: string[] = []
     for (let index = 1; index < 37; index++) {
-        cardArray.push(`card-item${index}`)
+        cardArray.push(`card-item${index.toString()}`)
     }
     shuffle(cardArray)
 
@@ -36,7 +35,7 @@ export const createCardArray = (level) => {
         default:
             break
     }
-// удваиваю количество карт
+    // удваиваю количество карт
     cardArray = cardArray.concat(cardArray)
 
     shuffle(cardArray)

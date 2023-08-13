@@ -1,12 +1,21 @@
 import { renderGame } from './components/render-game-component.js'
 
+interface GlobalState {
+    level: string;
+}
+declare global {
+    interface Window {
+        globalState: GlobalState;
+    }
+}
 window.globalState = {
     level: '',
 }
 export var level
 // рендер страницы с выбором уровня сложности
 export const renderPageChangeLevel = () => {
-    const appEl = document.getElementById('app')
+    // const appEl: HTMLElement = document.getElementById('app')
+    const appEl: HTMLElement = document.getElementById('app') as HTMLElement;
     const appHtml = `<div class="main" id="main-box">
     <h2 class="main__title">Выбери сложность</h2>
     <div class="main__level-box">
@@ -48,13 +57,13 @@ export const renderPageChangeLevel = () => {
 renderPageChangeLevel()
 
 const levelEl = document.querySelectorAll('.level-input')
-const startButtonEl = document.getElementById('start-button')
+const startButtonEl= document.getElementById('start-button') as HTMLButtonElement
 
 // Обработчик клика на  все инпуты выбора уровня
 levelEl.forEach((input) => {
     input.addEventListener('click', () => {
-        window.globalState.level = input.dataset.index
-        level = input.dataset.index
+        window.globalState.level = (input as any).dataset.index
+        level = (input as any).dataset.index
         console.log(level)
     })
 })
