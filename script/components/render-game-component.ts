@@ -45,6 +45,13 @@ export function renderGame(level) {
             .padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`
     }, 1000)
 
+    const startNewGameButton = appEl.querySelector(
+        '#startNewGameButton',
+    ) as HTMLElement
+    startNewGameButton.addEventListener('click', () => {
+        renderPageChangeLevel()
+    })
+
     setTimeout(() => {
         const closedCardHtml = cardArray
             .map((item, index) => {
@@ -58,7 +65,7 @@ export function renderGame(level) {
         const cards = appEl.querySelectorAll('.card-item')
         cards.forEach((card) => {
             card.addEventListener('click', () => {
-                if (!clickable) return
+                if (!clickable || card.classList.contains('inactive')) return
                 const index = (card as HTMLElement).dataset.index
                 if (index) {
                     card.classList.add(cardArray[parseInt(index)])
@@ -73,6 +80,8 @@ export function renderGame(level) {
                                     firstCard.className === secondCard.className
                                 ) {
                                     alert('Вы победили!')
+                                    firstCard.classList.add('inactive')
+                                    secondCard.classList.add('inactive')
                                 } else {
                                     alert('Вы проиграли!')
                                     firstCard.classList.remove(

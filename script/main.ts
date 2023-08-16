@@ -15,7 +15,6 @@ window.globalState = {
 export var level
 // рендер страницы с выбором уровня сложности
 export const renderPageChangeLevel = () => {
-    // const appEl: HTMLElement = document.getElementById('app')
     const appEl: HTMLElement = document.getElementById('app') as HTMLElement
     const appHtml = `<div class="main" id="main-box">
     <h2 class="main__title">Выбери сложность</h2>
