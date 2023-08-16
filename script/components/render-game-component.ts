@@ -1,5 +1,6 @@
-import { createCardArray } from './option-component.js'
-import { renderPageChangeLevel } from '../main.js'
+import { createCardArray } from './option-component'
+import { renderPageChangeLevel } from '../main'
+
 export function renderGame(level) {
     const appEl = document.getElementById('app') as HTMLElement
     let firstCard: HTMLElement | null = null

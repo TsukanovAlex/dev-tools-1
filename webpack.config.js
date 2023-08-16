@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = {
-    entry: './script/main.js',
+    entry: './script/main.ts',
     mode: 'development',
     module: {
         rules: [
@@ -34,6 +34,7 @@ module.exports = {
     optimization: {
         minimizer: ['...', new CssMinimizerPlugin()],
     },
+    devtool: process.env.NODE_ENV === 'production' ? false : 'source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -45,6 +46,10 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './index.html',
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
         }),
     ],
 }

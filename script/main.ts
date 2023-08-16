@@ -1,11 +1,12 @@
-import { renderGame } from './components/render-game-component.js'
+import { renderGame } from './components/render-game-component'
+import '../static/styles.css'
 
 interface GlobalState {
-    level: string;
+    level: string
 }
 declare global {
     interface Window {
-        globalState: GlobalState;
+        globalState: GlobalState
     }
 }
 window.globalState = {
@@ -15,7 +16,7 @@ export var level
 // рендер страницы с выбором уровня сложности
 export const renderPageChangeLevel = () => {
     // const appEl: HTMLElement = document.getElementById('app')
-    const appEl: HTMLElement = document.getElementById('app') as HTMLElement;
+    const appEl: HTMLElement = document.getElementById('app') as HTMLElement
     const appHtml = `<div class="main" id="main-box">
     <h2 class="main__title">Выбери сложность</h2>
     <div class="main__level-box">
@@ -57,7 +58,9 @@ export const renderPageChangeLevel = () => {
 renderPageChangeLevel()
 
 const levelEl = document.querySelectorAll('.level-input')
-const startButtonEl= document.getElementById('start-button') as HTMLButtonElement
+const startButtonEl = document.getElementById(
+    'start-button',
+) as HTMLButtonElement
 
 // Обработчик клика на  все инпуты выбора уровня
 levelEl.forEach((input) => {
@@ -76,4 +79,3 @@ startButtonEl.addEventListener('click', () => {
         alert('Пожалуйста, выберите уровень сложности')
     }
 })
-
