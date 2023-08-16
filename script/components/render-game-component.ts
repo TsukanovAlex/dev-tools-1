@@ -1,4 +1,4 @@
-import { createCardArray } from './option-component'
+import { createCardArray, renderFinal } from './option-component'
 import { renderPageChangeLevel } from '../main'
 
 export function renderGame(level) {
@@ -6,6 +6,7 @@ export function renderGame(level) {
     let firstCard: HTMLElement | null = null
     let secondCard: HTMLElement | null = null
     let clickable = true
+    let finalTime = 0
     // Массив перемешанных карт
     let cardArray = createCardArray(level)
 
@@ -76,20 +77,21 @@ export function renderGame(level) {
                         clickable = false
                         setTimeout(() => {
                             if (firstCard && secondCard) {
-                                if (
-                                    firstCard.className === secondCard.className
-                                ) {
+                                if (firstCard.className === secondCard.className) {
                                     alert('Вы победили!')
                                     firstCard.classList.add('inactive')
                                     secondCard.classList.add('inactive')
+                                    const inactiveCards = appEl.querySelectorAll('.card-item.inactive')
+                                    if (inactiveCards.length === cardArray.length) {
+                                        clearInterval(timerInterval)
+                                        finalTime = seconds
+                                        renderFinal(finalTime, 'win')
+                                    }
                                 } else {
                                     alert('Вы проиграли!')
-                                    firstCard.classList.remove(
-                                        firstCard.classList[1],
-                                    )
-                                    secondCard.classList.remove(
-                                        secondCard.classList[1],
-                                    )
+                                    firstCard.classList.remove(firstCard.classList[1])
+                                    secondCard.classList.remove(secondCard.classList[1])
+                                    renderFinal(finalTime, 'lose')
                                 }
                                 firstCard = null
                                 secondCard = null
