@@ -42,7 +42,20 @@ module.exports = {
     },
     plugins: [
         new CopyPlugin({
-            patterns: [{ from: 'static', to: 'static' }],
+            patterns: [
+                {
+                    from: 'static',
+                    to: 'static',
+                    globOptions: {
+                        ignore: [
+                            '**/*.jpg',
+                            '**/*.png',
+                            '**/*.woff',
+                            '**/*.woff2',
+                        ],
+                    },
+                },
+            ],
         }),
         new HtmlWebpackPlugin({
             template: './index.html',

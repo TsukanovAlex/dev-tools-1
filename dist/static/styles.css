@@ -323,4 +323,80 @@ main-box {
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
+}
+
+.final-result {
+  top: 158px;
+  height: 459px;
+  width: 480px;
+  background: #004980;
+  background-color: #c2f5ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  left: calc(50% - 240px);
+  z-index: 1;
+  position: absolute;
+}
+.final-result__status {
+  border: none;
+}
+.final-result__title {
+  color: var(--blue-120, #004980);
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+  margin-bottom: 28px;
+}
+.final-result__time {
+  color: #000;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 72px;
+  margin-bottom: 40px;
+}
+.final-result__time-text {
+  color: #000;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  margin-bottom: 10px;
+}
+.final-result__status-text {
+  color: var(--blue-120, #004980);
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+  margin-bottom: 28px;
+}
+
+.win-smille {
+  border: none;
+  background-image: url("../static/img/endGame/celebration.png");
+  background-size: cover;
+  width: 96px;
+  height: 96px;
+  margin-top: 32px;
+  margin-bottom: 9px;
+}
+
+.loose-smille {
+  border: none;
+  background-image: url("../static/img/endGame/dead.png");
+  background-size: cover;
+  width: 96px;
+  height: 96px;
+  margin-top: 32px;
+}
+
+.game__transparent {
+  opacity: 0.4;
 }/*# sourceMappingURL=styles.css.map */

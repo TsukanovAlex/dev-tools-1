@@ -17,6 +17,7 @@ export function renderGame(level) {
         .join('')
 
     const appHtml = `
+    <div id='game-table'>
     <header class="header center">
     <div class="header__timer-box">
     <div class="header__name-box">
@@ -30,6 +31,7 @@ export function renderGame(level) {
 <section class="game-field">
     ${openedCardHtml}
 </section>
+</div>
     `
 
     appEl.innerHTML = appHtml
@@ -37,14 +39,7 @@ export function renderGame(level) {
     // Таймер
     let seconds = 0
     const timerEl = appEl.querySelector('#seconds') as HTMLElement
-    const timerInterval = setInterval(() => {
-        seconds++
-        const minutes = Math.floor(seconds / 60)
-        const remainingSeconds = seconds % 60
-        timerEl.textContent = `${minutes
-            .toString()
-            .padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`
-    }, 1000)
+    let timerInterval
 
     const startNewGameButton = appEl.querySelector(
         '#startNewGameButton',
@@ -63,6 +58,17 @@ export function renderGame(level) {
         ;(appEl.querySelector('.game-field') as HTMLElement).innerHTML =
             closedCardHtml
 
+        timerInterval = setInterval(() => {
+            seconds++
+            const minutes = Math.floor(seconds / 60)
+            const remainingSeconds = seconds % 60
+            timerEl.textContent = `${minutes
+                .toString()
+                .padStart(2, '0')}:${remainingSeconds
+                .toString()
+                .padStart(2, '0')}`
+        }, 1000)
+
         const cards = appEl.querySelectorAll('.card-item')
         cards.forEach((card) => {
             card.addEventListener('click', () => {
@@ -77,20 +83,33 @@ export function renderGame(level) {
                         clickable = false
                         setTimeout(() => {
                             if (firstCard && secondCard) {
-                                if (firstCard.className === secondCard.className) {
+                                if (
+                                    firstCard.className === secondCard.className
+                                ) {
                                     alert('Вы победили!')
                                     firstCard.classList.add('inactive')
                                     secondCard.classList.add('inactive')
-                                    const inactiveCards = appEl.querySelectorAll('.card-item.inactive')
-                                    if (inactiveCards.length === cardArray.length) {
+                                    const inactiveCards =
+                                        appEl.querySelectorAll(
+                                            '.card-item.inactive',
+                                        )
+                                    if (
+                                        inactiveCards.length ===
+                                        cardArray.length
+                                    ) {
                                         clearInterval(timerInterval)
                                         finalTime = seconds
                                         renderFinal(finalTime, 'win')
                                     }
                                 } else {
                                     alert('Вы проиграли!')
-                                    firstCard.classList.remove(firstCard.classList[1])
-                                    secondCard.classList.remove(secondCard.classList[1])
+                                    firstCard.classList.remove(
+                                        firstCard.classList[1],
+                                    )
+                                    secondCard.classList.remove(
+                                        secondCard.classList[1],
+                                    )
+                                    finalTime = seconds
                                     renderFinal(finalTime, 'lose')
                                 }
                                 firstCard = null
