@@ -204,6 +204,7 @@ function renderGame(level) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   addStartButtonClickListener: () => (/* binding */ addStartButtonClickListener),
 /* harmony export */   level: () => (/* binding */ level),
 /* harmony export */   renderPageChangeLevel: () => (/* binding */ renderPageChangeLevel)
 /* harmony export */ });
@@ -232,15 +233,19 @@ levelEl.forEach(function (input) {
         console.log(level);
     });
 });
-// Обработчик клика на кнопку старт
-startButtonEl.addEventListener('click', function () {
-    if (window.globalState.level) {
-        (0,_components_render_game_component__WEBPACK_IMPORTED_MODULE_0__.renderGame)(level);
-    }
-    else {
-        alert('Пожалуйста, выберите уровень сложности');
-    }
-});
+var addStartButtonClickListener = function () {
+    var startButtonEl = document.getElementById('start-button');
+    // Обработчик клика на кнопку старт
+    startButtonEl.addEventListener('click', function () {
+        if (window.globalState.level) {
+            (0,_components_render_game_component__WEBPACK_IMPORTED_MODULE_0__.renderGame)(level);
+        }
+        else {
+            alert('Пожалуйста, выберите уровень сложности');
+        }
+    });
+};
+addStartButtonClickListener();
 
 
 /***/ })

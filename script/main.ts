@@ -2,7 +2,7 @@ import { renderGame } from './components/render-game-component'
 import '../static/styles.css'
 
 interface GlobalState {
-    level: string
+    level: string | undefined
 }
 declare global {
     interface Window {
@@ -64,17 +64,25 @@ const startButtonEl = document.getElementById(
 // Обработчик клика на  все инпуты выбора уровня
 levelEl.forEach((input) => {
     input.addEventListener('click', () => {
-        window.globalState.level = (input as any).dataset.index
-        level = (input as any).dataset.index
+        window.globalState.level = (input as HTMLElement).dataset.index
+        level = (input as HTMLElement).dataset.index
         console.log(level)
     })
 })
 
-// Обработчик клика на кнопку старт
-startButtonEl.addEventListener('click', () => {
-    if (window.globalState.level) {
-        renderGame(level)
-    } else {
-        alert('Пожалуйста, выберите уровень сложности')
-    }
-})
+export const StartButtonClickListener = () => {
+    const startButtonEl = document.getElementById(
+        'start-button',
+    ) as HTMLButtonElement
+
+    // Обработчик клика на кнопку старт
+    startButtonEl.addEventListener('click', () => {
+        if (window.globalState.level) {
+            renderGame(level)
+        } else {
+            alert('Пожалуйста, выберите уровень сложности')
+        }
+    })
+}
+
+StartButtonClickListener()

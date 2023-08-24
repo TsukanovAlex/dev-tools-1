@@ -69,10 +69,13 @@ export function renderFinal(finalTime, gameStatus) {
             </div>
         `
     appEl.innerHTML = appEl.innerHTML + finalPageHtml
+
     const gamePage = document.getElementById('game-table') as HTMLElement
     gamePage.classList.add('game__transparent')
 
-    const startNewGameButton = document.getElementById('startNewGameButtonEnd') as HTMLElement
+    const startNewGameButton = document.getElementById(
+        'startNewGameButtonEnd',
+    ) as HTMLElement
     startNewGameButton.addEventListener('click', () => {
         renderPageChangeLevel()
     })
