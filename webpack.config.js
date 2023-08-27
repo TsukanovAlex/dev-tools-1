@@ -5,10 +5,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = {
-    entry: './script/main.js',
+    entry: './script/main.ts',
     mode: 'development',
     module: {
         rules: [
+            {
+                test: /\.ts$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
             {
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
@@ -23,9 +28,13 @@ module.exports = {
             },
         ],
     },
+    resolve: {
+        extensions: ['.ts', '.js'],
+    },
     optimization: {
         minimizer: ['...', new CssMinimizerPlugin()],
     },
+    devtool: process.env.NODE_ENV === 'production' ? false : 'source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -33,10 +42,27 @@ module.exports = {
     },
     plugins: [
         new CopyPlugin({
-            patterns: [{ from: 'static', to: 'static' }],
+            patterns: [
+                {
+                    from: 'static',
+                    to: 'static',
+                    globOptions: {
+                        ignore: [
+                            '**/*.jpg',
+                            '**/*.png',
+                            '**/*.woff',
+                            '**/*.woff2',
+                        ],
+                    },
+                },
+            ],
         }),
         new HtmlWebpackPlugin({
             template: './index.html',
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
         }),
     ],
 }

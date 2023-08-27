@@ -1,12 +1,21 @@
-import { renderGame } from './components/render-game-component.js'
+import { renderGame } from './components/render-game-component'
+import '../static/styles.css'
 
+interface GlobalState {
+    level: string | undefined
+}
+declare global {
+    interface Window {
+        globalState: GlobalState
+    }
+}
 window.globalState = {
     level: '',
 }
 export var level
 // рендер страницы с выбором уровня сложности
 export const renderPageChangeLevel = () => {
-    const appEl = document.getElementById('app')
+    const appEl: HTMLElement = document.getElementById('app') as HTMLElement
     const appHtml = `<div class="main" id="main-box">
     <h2 class="main__title">Выбери сложность</h2>
     <div class="main__level-box">
@@ -48,23 +57,32 @@ export const renderPageChangeLevel = () => {
 renderPageChangeLevel()
 
 const levelEl = document.querySelectorAll('.level-input')
-const startButtonEl = document.getElementById('start-button')
+const startButtonEl = document.getElementById(
+    'start-button',
+) as HTMLButtonElement
 
 // Обработчик клика на  все инпуты выбора уровня
 levelEl.forEach((input) => {
     input.addEventListener('click', () => {
-        window.globalState.level = input.dataset.index
-        level = input.dataset.index
+        window.globalState.level = (input as HTMLElement).dataset.index
+        level = (input as HTMLElement).dataset.index
         console.log(level)
     })
 })
 
-// Обработчик клика на кнопку старт
-startButtonEl.addEventListener('click', () => {
-    if (window.globalState.level) {
-        renderGame(level)
-    } else {
-        alert('Пожалуйста, выберите уровень сложности')
-    }
-})
+export const StartButtonClickListener = () => {
+    const startButtonEl = document.getElementById(
+        'start-button',
+    ) as HTMLButtonElement
 
+    // Обработчик клика на кнопку старт
+    startButtonEl.addEventListener('click', () => {
+        if (window.globalState.level) {
+            renderGame(level)
+        } else {
+            alert('Пожалуйста, выберите уровень сложности')
+        }
+    })
+}
+
+StartButtonClickListener()

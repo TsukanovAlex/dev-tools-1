@@ -1,7 +1,10 @@
+/*!*********************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./static/styles.css ***!
+  \*********************************************************************/
 @font-face {
   font-family: "StratosSkyeng";
-  src: url(../fonts/StratosSkyeng.woff);
-  src: url(../fonts/StratosSkyeng.woff2);
+  src: url(d7d99bd522cf2d77ce4a.woff);
+  src: url(ce93393e831d32412096.woff2);
 }
 * {
   margin: 0;
@@ -93,7 +96,7 @@ main-box {
 }
 
 .card-item {
-  background-image: url("../static/img/shirt.jpg");
+  background-image: url(918c867605aa25517e4d.jpg);
   background-size: cover;
   background-position: center;
   width: 95px;
@@ -102,154 +105,154 @@ main-box {
 }
 
 .cards-of-shirt {
-  background-image: url(./img/shirt.jpg);
+  background-image: url(918c867605aa25517e4d.jpg);
   background-size: cover;
   border-radius: 4px;
   height: 133px;
 }
 
 .card-item1 {
-  background-image: url(./img/A_Spades.jpg);
+  background-image: url(fe6ef8d021e1153f0bb0.jpg);
 }
 
 .card-item2 {
-  background-image: url(./img/K_Spades.jpg);
+  background-image: url(3c746a4d23c1a757f027.jpg);
 }
 
 .card-item3 {
-  background-image: url(./img/Q_Spades.jpg);
+  background-image: url(07fab7bed63b48de27e6.jpg);
 }
 
 .card-item4 {
-  background-image: url(./img/J_Spades.jpg);
+  background-image: url(defceaf9e376d0f4427b.jpg);
 }
 
 .card-item5 {
-  background-image: url(./img/10_Spades.jpg);
+  background-image: url(d16c87f122b8ea872996.jpg);
 }
 
 .card-item6 {
-  background-image: url(./img/9_Spades.jpg);
+  background-image: url(e798a3ef75b4e212daab.jpg);
 }
 
 .card-item7 {
-  background-image: url(./img/8_Spades.jpg);
+  background-image: url(8a146ad5d2c2c7c7a5b2.jpg);
 }
 
 .card-item8 {
-  background-image: url(./img/7_Spades.jpg);
+  background-image: url(0568fc40c6af6c56494e.jpg);
 }
 
 .card-item9 {
-  background-image: url(./img/6_Spades.jpg);
+  background-image: url(919c7530df2254ffbfce.jpg);
 }
 
 .card-item10 {
-  background-image: url(./img/A_Hearts.jpg);
+  background-image: url(d1f8962476dab251f869.jpg);
 }
 
 .card-item11 {
-  background-image: url(./img/K_Hearts.jpg);
+  background-image: url(6d7db7217e33687f0d9f.jpg);
 }
 
 .card-item12 {
-  background-image: url(./img/Q_Hearts.jpg);
+  background-image: url(6f9b54a58b7f032a8609.jpg);
 }
 
 .card-item13 {
-  background-image: url(./img/J_Hearts.jpg);
+  background-image: url(4e4d751230d82b40ce9d.jpg);
 }
 
 .card-item14 {
-  background-image: url(./img/10_Hearts.jpg);
+  background-image: url(5cf3a61cb7593ad301fb.jpg);
 }
 
 .card-item15 {
-  background-image: url(./img/9_Hearts.jpg);
+  background-image: url(0dd43b504db9d205fa55.jpg);
 }
 
 .card-item16 {
-  background-image: url(./img/8_Hearts.jpg);
+  background-image: url(937a5cfe9a3de2249889.jpg);
 }
 
 .card-item17 {
-  background-image: url(./img/7_Hearts.jpg);
+  background-image: url(e4f79fa23cddd8d4aba5.jpg);
 }
 
 .card-item18 {
-  background-image: url(./img/6_Hearts.jpg);
+  background-image: url(acee3e0f1d14c0b272bf.jpg);
 }
 
 .card-item19 {
-  background-image: url(./img/A_Diamonds.jpg);
+  background-image: url(590283c17ae96e8137a1.jpg);
 }
 
 .card-item20 {
-  background-image: url(./img/K_Diamonds.jpg);
+  background-image: url(9e01a5ea7c636d761b63.jpg);
 }
 
 .card-item21 {
-  background-image: url(./img/Q_Diamonds.jpg);
+  background-image: url(ad7de190f376d4616eae.jpg);
 }
 
 .card-item22 {
-  background-image: url(./img/J_Diamonds.jpg);
+  background-image: url(9eb9c7bc940c1faa4791.jpg);
 }
 
 .card-item23 {
-  background-image: url(./img/10_Diamonds.jpg);
+  background-image: url(3397a3e671716f070a24.jpg);
 }
 
 .card-item24 {
-  background-image: url(./img/9_Diamonds.jpg);
+  background-image: url(30dfdd5a7060f6d980e9.jpg);
 }
 
 .card-item25 {
-  background-image: url(./img/8_Diamonds.jpg);
+  background-image: url(dd4eb108f1f7009cbc0d.jpg);
 }
 
 .card-item26 {
-  background-image: url(./img/7_Diamonds.jpg);
+  background-image: url(8739a7379abc377c1704.jpg);
 }
 
 .card-item27 {
-  background-image: url(./img/6_Diamonds.jpg);
+  background-image: url(2470c8d5703818b1f34c.jpg);
 }
 
 .card-item28 {
-  background-image: url(./img/A_Clubs.jpg);
+  background-image: url(be5a9f8947edcd687d9d.jpg);
 }
 
 .card-item29 {
-  background-image: url(./img/K_Clubs.jpg);
+  background-image: url(30032ae33ba4a7832920.jpg);
 }
 
 .card-item30 {
-  background-image: url(./img/Q_Clubs.jpg);
+  background-image: url(4c6c3600bac467c710ff.jpg);
 }
 
 .card-item31 {
-  background-image: url(./img/J_Clubs.jpg);
+  background-image: url(12bcc4af6eb00099c4c8.jpg);
 }
 
 .card-item32 {
-  background-image: url(./img/10_Clubs.jpg);
+  background-image: url(ca47bd3bdbae5f096693.jpg);
 }
 
 .card-item33 {
-  background-image: url(./img/9_Clubs.jpg);
+  background-image: url(ca59a52a8cbc39e777a9.jpg);
 }
 
 .card-item34 {
-  background-image: url(./img/8_Clubs.jpg);
+  background-image: url(84568345c2e6935db076.jpg);
 }
 
 .card-item35 {
-  background-image: url(./img/7_Clubs.jpg);
+  background-image: url(d5ef7e862ba0dbd4882d.jpg);
 }
 
 .card-item36 {
-  background-image: url(./img/6_Clubs.jpg);
+  background-image: url(d37c8da292683266091e.jpg);
 }
 
 .center {
@@ -379,7 +382,7 @@ main-box {
 
 .win-smille {
   border: none;
-  background-image: url("../static/img/endGame/celebration.png");
+  background-image: url(945b49dc7f1e116d9bab.png);
   background-size: cover;
   width: 96px;
   height: 96px;
@@ -389,7 +392,7 @@ main-box {
 
 .loose-smille {
   border: none;
-  background-image: url("../static/img/endGame/dead.png");
+  background-image: url(c0f2cf2e882a6d3af1aa.png);
   background-size: cover;
   width: 96px;
   height: 96px;
@@ -399,3 +402,5 @@ main-box {
 .game__transparent {
   opacity: 0.4;
 }/*# sourceMappingURL=styles.css.map */
+
+/*# sourceMappingURL=main.css.map*/
