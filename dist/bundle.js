@@ -204,7 +204,7 @@ function renderGame(level) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   addStartButtonClickListener: () => (/* binding */ addStartButtonClickListener),
+/* harmony export */   StartButtonClickListener: () => (/* binding */ StartButtonClickListener),
 /* harmony export */   level: () => (/* binding */ level),
 /* harmony export */   renderPageChangeLevel: () => (/* binding */ renderPageChangeLevel)
 /* harmony export */ });
@@ -222,9 +222,10 @@ var renderPageChangeLevel = function () {
     var appHtml = "<div class=\"main\" id=\"main-box\">\n    <h2 class=\"main__title\">\u0412\u044B\u0431\u0435\u0440\u0438 \u0441\u043B\u043E\u0436\u043D\u043E\u0441\u0442\u044C</h2>\n    <div class=\"main__level-box\">\n        <input\n            type=\"radio\"\n            name=\"games\"\n            data-index=\"1\"\n            id=\"level-light\"\n            class=\"level-input\"\n            value=\"1\"\n        />\n        <label for=\"level-light\">1</label>\n\n        <input\n            type=\"radio\"\n            name=\"games\"\n            data-index=\"2\"\n            id=\"level-medium\"\n            class=\"level-input\"\n            value=\"2\"\n        />\n        <label for=\"level-medium\">2</label>\n\n        <input\n            type=\"radio\"\n            name=\"games\"\n            data-index=\"3\"\n            id=\"level-hard\"\n            class=\"level-input\"\n            value=\"3\"\n        />\n        <label for=\"level-hard\">3</label>\n    </div>\n    <button id=\"start-button\" class=\"main__button\">\u0421\u0442\u0430\u0440\u0442</button>\n</div>";
     appEl.innerHTML = appHtml;
 };
-renderPageChangeLevel();
 var levelEl = document.querySelectorAll('.level-input');
-var startButtonEl = document.getElementById('start-button');
+// const startButtonEl = document.getElementById(
+//     'start-button',
+// ) as HTMLButtonElement
 // Обработчик клика на  все инпуты выбора уровня
 levelEl.forEach(function (input) {
     input.addEventListener('click', function () {
@@ -233,19 +234,19 @@ levelEl.forEach(function (input) {
         console.log(level);
     });
 });
-var addStartButtonClickListener = function () {
+var StartButtonClickListener = function () {
     var startButtonEl = document.getElementById('start-button');
     // Обработчик клика на кнопку старт
     startButtonEl.addEventListener('click', function () {
         if (window.globalState.level) {
-            (0,_components_render_game_component__WEBPACK_IMPORTED_MODULE_0__.renderGame)(level);
+            (0,_components_render_game_component__WEBPACK_IMPORTED_MODULE_0__.renderGame)(window.globalState.level);
         }
         else {
             alert('Пожалуйста, выберите уровень сложности');
         }
     });
 };
-addStartButtonClickListener();
+renderPageChangeLevel();
 
 
 /***/ })

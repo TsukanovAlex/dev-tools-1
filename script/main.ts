@@ -13,6 +13,7 @@ window.globalState = {
     level: '',
 }
 export var level
+
 // рендер страницы с выбором уровня сложности
 export const renderPageChangeLevel = () => {
     const appEl: HTMLElement = document.getElementById('app') as HTMLElement
@@ -56,6 +57,7 @@ export const renderPageChangeLevel = () => {
 
 renderPageChangeLevel()
 
+
 const levelEl = document.querySelectorAll('.level-input')
 const startButtonEl = document.getElementById(
     'start-button',
@@ -78,11 +80,10 @@ export const StartButtonClickListener = () => {
     // Обработчик клика на кнопку старт
     startButtonEl.addEventListener('click', () => {
         if (window.globalState.level) {
-            renderGame(level)
+            renderGame(window.globalState.level)
         } else {
             alert('Пожалуйста, выберите уровень сложности')
         }
     })
 }
-
-StartButtonClickListener()
+StartButtonClickListener() 

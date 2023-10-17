@@ -1,4 +1,5 @@
-import { renderPageChangeLevel } from '../main'
+import { renderPageChangeLevel, StartButtonClickListener} from '../main'
+
 
 // Перемешивает карты
 function shuffle(array) {
@@ -78,5 +79,6 @@ export function renderFinal(finalTime, gameStatus) {
     ) as HTMLElement
     startNewGameButton.addEventListener('click', () => {
         renderPageChangeLevel()
+        StartButtonClickListener()
     })
 }

@@ -4,11 +4,11 @@
     "description": "",
     "main": "main.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "jest",
         "build": "set NODE_ENV=production && webpack",
         "start": "webpack-dev-server --open",
         "format": "prettier --write ../DEV-TOOLS",
-        "lint:js": "eslint ./script/**/*.js",
+        "lint:ts": "eslint ./script/**/*.ts",
         "lint:css": "stylelint ./static/**.css",
         "prepare": "husky install",
         "start_prod": "webpack-dev-server --open --mode production"
@@ -36,5 +36,9 @@
         "webpack": "^5.88.2",
         "webpack-cli": "^5.1.4",
         "webpack-dev-server": "^4.15.1"
+    },
+    "dependencies": {
+        "jest": "^29.6.4",
+        "save-dev": "^0.0.1-security"
     }
 }
