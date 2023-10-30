@@ -6,6 +6,9 @@
     },
     "extends": ["eslint:recommended", "prettier"],
     "plugins": ["prettier"],
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
     "parserOptions": {
         "ecmaVersion": 2020,
         "sourceType": "module"

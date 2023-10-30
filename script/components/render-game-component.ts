@@ -1,5 +1,5 @@
 import { createCardArray, renderFinal } from './option-component'
-import { renderPageChangeLevel } from '../main'
+import { renderPageChangeLevel, StartButtonClickListener } from '../main'
 
 export function renderGame(level) {
     const appEl = document.getElementById('app') as HTMLElement
@@ -45,6 +45,7 @@ export function renderGame(level) {
         '#startNewGameButton',
     ) as HTMLElement
     startNewGameButton.addEventListener('click', () => {
+        StartButtonClickListener()
         renderPageChangeLevel()
     })
 

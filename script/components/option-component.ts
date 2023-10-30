@@ -1,5 +1,4 @@
-import { renderPageChangeLevel, StartButtonClickListener} from '../main'
-
+import { renderPageChangeLevel, StartButtonClickListener } from '../main'
 
 // Перемешивает карты
 function shuffle(array) {
