@@ -1,8 +1,6 @@
 import { renderGame } from './components/render-game-component'
 import '../static/styles.css'
 
-
-
 interface GlobalState {
     level: string | undefined
 }
@@ -18,8 +16,10 @@ export var level
 
 // рендер страницы с выбором уровня сложности
 export const renderPageChangeLevel = () => {
-    const appEl: HTMLElement | null = document.getElementById('app') as HTMLElement
-    
+    const appEl: HTMLElement | null = document.getElementById(
+        'app',
+    ) as HTMLElement
+
     const appHtml = `<div class="main" id="main-box">
     <h2 class="main__title">Выбери сложность</h2>
     <div class="main__level-box">
@@ -56,39 +56,41 @@ export const renderPageChangeLevel = () => {
     <button id="start-button" class="main__button">Старт</button>
 </div>`
     appEl.innerHTML = appHtml
-}
 
-renderPageChangeLevel()
-
-
-const levelEl = document.querySelectorAll('.level-input')
-const startButtonEl = document.getElementById(
-    'start-button',
-) as HTMLButtonElement
-
-// Обработчик клика на  все инпуты выбора уровня
-levelEl.forEach((input) => {
-    input.addEventListener('click', () => {
-        window.globalState.level = (input as HTMLElement).dataset.index
-        level = (input as HTMLElement).dataset.index
-        console.log(level)
-    })
-})
-
-export const StartButtonClickListener = () => {
+    const levelEl = document.querySelectorAll('.level-input')
     const startButtonEl = document.getElementById(
         'start-button',
     ) as HTMLButtonElement
 
-    if (startButtonEl) {
-        // Обработчик клика на кнопку старт
-        startButtonEl.addEventListener('click', () => {
-            if (window.globalState.level) {
-                renderGame(window.globalState.level)
-            } else {
-                alert('Пожалуйста, выберите уровень сложности')
-            }
+    // Обработчик клика на  все инпуты выбора уровня
+    const inputEventListener = () => {
+        levelEl.forEach((input) => {
+            input.addEventListener('click', () => {
+                window.globalState.level = (input as HTMLElement).dataset.index
+                level = (input as HTMLElement).dataset.index
+                console.log(level)
+            })
         })
     }
+
+    const StartButtonClickListener = () => {
+        const startButtonEl = document.getElementById(
+            'start-button',
+        ) as HTMLButtonElement
+
+        if (startButtonEl) {
+            // Обработчик клика на кнопку старт
+            startButtonEl.addEventListener('click', () => {
+                if (window.globalState.level) {
+                    renderGame(window.globalState.level)
+                } else {
+                    alert('Пожалуйста, выберите уровень сложности')
+                }
+            })
+        }
+    }
+    StartButtonClickListener()
+    inputEventListener()
 }
-StartButtonClickListener() 
+
+renderPageChangeLevel()

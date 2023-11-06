@@ -1,5 +1,5 @@
 import { createCardArray, renderFinal } from './option-component'
-import { renderPageChangeLevel, StartButtonClickListener } from '../main'
+import { renderPageChangeLevel } from '../main'
 
 export function renderGame(level) {
     const appEl = document.getElementById('app') as HTMLElement
@@ -41,11 +41,11 @@ export function renderGame(level) {
     const timerEl = appEl.querySelector('#seconds') as HTMLElement
     let timerInterval
 
+    // Обработчмк клика на кнопку "Начать заново"
     const startNewGameButton = appEl.querySelector(
         '#startNewGameButton',
     ) as HTMLElement
     startNewGameButton.addEventListener('click', () => {
-        StartButtonClickListener()
         renderPageChangeLevel()
     })
 
@@ -56,7 +56,8 @@ export function renderGame(level) {
             })
             .join('')
 
-        ;(appEl.querySelector('.game-field') as HTMLElement).innerHTML =
+        ;
+        (appEl.querySelector('.game-field') as HTMLElement).innerHTML =
             closedCardHtml
 
         timerInterval = setInterval(() => {

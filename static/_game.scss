@@ -8,11 +8,6 @@
     grid-template-columns: repeat(9, 1fr);
     gap: 15px;
 }
-.center {
-    padding-left: calc(50% - 488px);
-    padding-right: calc(50% - 488px);
-}
-
 .header {
     display: flex;
     margin-top: 22px;
