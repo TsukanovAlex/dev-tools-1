@@ -57,8 +57,15 @@ export function renderGame(level) {
             .join('')
 
         ;
-        (appEl.querySelector('.game-field') as HTMLElement).innerHTML =
-            closedCardHtml
+
+        
+        // (appEl.querySelector('.game-field') as HTMLElement).innerHTML =
+        //     closedCardHtml
+        const gameFieldElement = appEl.querySelector('.game-field') as HTMLElement;
+
+if (gameFieldElement) {
+    gameFieldElement.innerHTML = closedCardHtml;
+} 
 
         timerInterval = setInterval(() => {
             seconds++

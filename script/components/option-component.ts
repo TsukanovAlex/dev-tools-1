@@ -1,7 +1,7 @@
-import { renderPageChangeLevel, } from '../main'
+import { renderPageChangeLevel } from '../main'
 
 // Перемешивает карты
-function shuffle(array) {
+export function shuffle(array) {
     let currentIndex = array.length,
         randomIndex
     while (currentIndex !== 0) {

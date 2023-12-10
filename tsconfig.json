@@ -1,11 +1,16 @@
 {
     "compilerOptions": {
-        "strict": true,
-        "outDir": "./dist/",
-        "noImplicitAny": false,
-        "module": "es6",
-        "target": "es5",
-        "allowJs": true,
-        "moduleResolution": "node"
+      "strict": true,
+      "outDir": "./dist/",
+      "noImplicitAny": false,
+      "module": "es6",
+      "target": "es5",
+      "allowJs": true,
+      "moduleResolution": "node"
+    },
+    "jest": {
+      "preset": "ts-jest",
+      "testEnvironment": "jsdom"
     }
-}
+  }
+  
