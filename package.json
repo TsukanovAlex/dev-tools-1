@@ -13,12 +13,18 @@
         "prepare": "husky install",
         "start_prod": "webpack-dev-server --open --mode production"
     },
+    "husky": {
+        "hooks": {
+          "pre-commit": "npm test" 
+        }
+      },
     "jest": {
         "testEnvironment": "jsdom",
         "transform": {
             "^.+\\.(ts|tsx)$": "babel-jest",
             "^.+\\.css$": "jest-css-modules-transform"
         },
+        
         "setupFilesAfterEnv": [
             "./jest.setup.js"
         ]
