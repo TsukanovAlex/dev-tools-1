@@ -33,7 +33,6 @@ export function renderGame(level) {
 </section>
 </div>
     `
-
     appEl.innerHTML = appHtml
 
     // Таймер

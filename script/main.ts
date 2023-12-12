@@ -57,10 +57,8 @@ export const renderPageChangeLevel = () => {
     const appElem = document.getElementById('app') as HTMLElement
     appElem.classList.remove('game-over-bg')
       }
-
     const levelEl = document.querySelectorAll('.level-input')
     
-
     // Обработчик клика на  все инпуты выбора уровня
     const inputEventListener = () => {
         levelEl.forEach((input) => {
