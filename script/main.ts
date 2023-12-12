@@ -16,11 +16,9 @@ export var level
 
 // рендер страницы с выбором уровня сложности
 export const renderPageChangeLevel = () => {
-    const appEl: HTMLElement | null = document.getElementById(
-        'app',
-    ) as HTMLElement
-
-    const appHtml = `<div class="main" id="main-box">
+    const appEl = document.getElementById('app');
+    if (appEl !== null) {
+        const appHtml = `<div class="main" id="main-box">
     <h2 class="main__title">Выбери сложность</h2>
     <div class="main__level-box">
         <input
@@ -56,11 +54,10 @@ export const renderPageChangeLevel = () => {
     <button id="start-button" class="main__button">Старт</button>
 </div>`
     appEl.innerHTML = appHtml
+      }
 
     const levelEl = document.querySelectorAll('.level-input')
-    const startButtonEl = document.getElementById(
-        'start-button',
-    ) as HTMLButtonElement
+    
 
     // Обработчик клика на  все инпуты выбора уровня
     const inputEventListener = () => {
