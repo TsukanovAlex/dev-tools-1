@@ -56,16 +56,13 @@ export function renderGame(level) {
             })
             .join('')
 
-        ;
+        const gameFieldElement = appEl.querySelector(
+            '.game-field',
+        ) as HTMLElement
 
-        
-        // (appEl.querySelector('.game-field') as HTMLElement).innerHTML =
-        //     closedCardHtml
-        const gameFieldElement = appEl.querySelector('.game-field') as HTMLElement;
-
-if (gameFieldElement) {
-    gameFieldElement.innerHTML = closedCardHtml;
-} 
+        if (gameFieldElement) {
+            gameFieldElement.innerHTML = closedCardHtml
+        }
 
         timerInterval = setInterval(() => {
             seconds++
@@ -95,7 +92,6 @@ if (gameFieldElement) {
                                 if (
                                     firstCard.className === secondCard.className
                                 ) {
-                                    alert('Вы победили!')
                                     firstCard.classList.add('inactive')
                                     secondCard.classList.add('inactive')
                                     const inactiveCards =
@@ -111,7 +107,6 @@ if (gameFieldElement) {
                                         renderFinal(finalTime, 'win')
                                     }
                                 } else {
-                                    alert('Вы проиграли!')
                                     firstCard.classList.remove(
                                         firstCard.classList[1],
                                     )

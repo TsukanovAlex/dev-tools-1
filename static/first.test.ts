@@ -1,5 +1,5 @@
 import { it, describe, expect } from '@jest/globals';
-import { shuffle } from './option-component';
+import { shuffle } from '../script/components/option-component';
 
 describe('Тестируем функцию перемешивания массива', () => {
     it('проверяем что количество элементов не изменилось', () => {
