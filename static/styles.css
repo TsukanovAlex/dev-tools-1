@@ -394,4 +394,18 @@ main-box {
 
 .game__transparent {
   opacity: 0.4;
+}
+
+.game-over-bg {
+  background: linear-gradient(to bottom, rgba(0, 73, 128, 0.9), rgba(0, 73, 128, 0.9)), url("./img/endGame/bg.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-sizing: content-box;
+  box-shadow: none;
+  overflow: hidden;
+  background-origin: content-box;
+  width: 150vh;
+  margin: auto;
+  height: 100vh;
 }/*# sourceMappingURL=styles.css.map */

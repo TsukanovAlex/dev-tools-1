@@ -54,6 +54,8 @@ export const renderPageChangeLevel = () => {
     <button id="start-button" class="main__button">Старт</button>
 </div>`
     appEl.innerHTML = appHtml
+    const appElem = document.getElementById('app') as HTMLElement
+    appElem.classList.remove('game-over-bg')
       }
 
     const levelEl = document.querySelectorAll('.level-input')

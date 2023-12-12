@@ -69,9 +69,14 @@ export function renderFinal(finalTime, gameStatus) {
         `
     appEl.innerHTML = appEl.innerHTML + finalPageHtml
 
-    const gamePage = document.getElementById('game-table') as HTMLElement
-    gamePage.classList.add('game__transparent')
+    
 
+    const gamePage = document.getElementById('game-table') as HTMLElement
+    gamePage.style.display = 'none'
+    const appElem = document.getElementById('app') as HTMLElement
+    appElem.classList.add('game-over-bg')
+    
+    
     const startNewGameButton = document.getElementById(
         'startNewGameButtonEnd',
     ) as HTMLElement
