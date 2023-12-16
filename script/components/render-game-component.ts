@@ -41,6 +41,7 @@ export function renderGame(level) {
     const timerEl = appEl.querySelector('#seconds') as HTMLElement
     let timerInterval
 
+    // Обработчмк клика на кнопку "Начать заново"
     const startNewGameButton = appEl.querySelector(
         '#startNewGameButton',
     ) as HTMLElement
@@ -55,8 +56,13 @@ export function renderGame(level) {
             })
             .join('')
 
-        ;(appEl.querySelector('.game-field') as HTMLElement).innerHTML =
-            closedCardHtml
+        const gameFieldElement = appEl.querySelector(
+            '.game-field',
+        ) as HTMLElement
+
+        if (gameFieldElement) {
+            gameFieldElement.innerHTML = closedCardHtml
+        }
 
         timerInterval = setInterval(() => {
             seconds++
@@ -86,7 +92,6 @@ export function renderGame(level) {
                                 if (
                                     firstCard.className === secondCard.className
                                 ) {
-                                    alert('Вы победили!')
                                     firstCard.classList.add('inactive')
                                     secondCard.classList.add('inactive')
                                     const inactiveCards =
@@ -102,7 +107,6 @@ export function renderGame(level) {
                                         renderFinal(finalTime, 'win')
                                     }
                                 } else {
-                                    alert('Вы проиграли!')
                                     firstCard.classList.remove(
                                         firstCard.classList[1],
                                     )

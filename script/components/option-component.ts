@@ -1,8 +1,7 @@
-import { renderPageChangeLevel, StartButtonClickListener} from '../main'
-
+import { renderPageChangeLevel } from '../main'
 
 // Перемешивает карты
-function shuffle(array) {
+export function shuffle(array) {
     let currentIndex = array.length,
         randomIndex
     while (currentIndex !== 0) {
@@ -13,7 +12,6 @@ function shuffle(array) {
             array[currentIndex],
         ]
     }
-
     return array
 }
 
@@ -71,14 +69,18 @@ export function renderFinal(finalTime, gameStatus) {
         `
     appEl.innerHTML = appEl.innerHTML + finalPageHtml
 
-    const gamePage = document.getElementById('game-table') as HTMLElement
-    gamePage.classList.add('game__transparent')
+    
 
+    const gamePage = document.getElementById('game-table') as HTMLElement
+    gamePage.style.display = 'none'
+    const appElem = document.getElementById('app') as HTMLElement
+    appElem.classList.add('game-over-bg')
+    
+    
     const startNewGameButton = document.getElementById(
         'startNewGameButtonEnd',
     ) as HTMLElement
     startNewGameButton.addEventListener('click', () => {
         renderPageChangeLevel()
-        StartButtonClickListener()
     })
 }

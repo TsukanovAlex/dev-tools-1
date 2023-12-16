@@ -28,7 +28,7 @@ main-box {
   border-radius: 12px;
   justify-content: space-evenly;
   margin: auto;
-  margin-top: 250px;
+  margin-top: 175px;
 }
 .main__title {
   font-size: 40px;
@@ -262,11 +262,6 @@ main-box {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   gap: 15px;
-}
-
-.center {
-  padding-left: calc(50% - 488px);
-  padding-right: calc(50% - 488px);
 }
 
 .header {
