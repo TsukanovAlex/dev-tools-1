@@ -1,36 +1,37 @@
 {
     "env": {
-      "browser": true,
-      "es6": true,
-      "node": true,
-      "jest/globals": true
+        "browser": true,
+        "es6": true,
+        "node": true
     },
-    "extends": ["eslint:recommended", "prettier"],
-    "plugins": ["prettier", "jest"],
-    "editor.codeActionsOnSave": {
-      "source.fixAll": true
-    },
+    "extends": [
+        "eslint:recommended",
+        "prettier",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "plugins": ["prettier", "jest", "@typescript-eslint"],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module"
+        "ecmaVersion": 2020,
+        "sourceType": "module"
     },
     "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "endOfLine": "auto"
-        }
-      ],
-      "camelcase": ["error"],
-      "eqeqeq": ["error", "always"]
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
+        "camelcase": ["error"],
+        "eqeqeq": ["error", "always"],
+        "no-var": "off"
     },
     "overrides": [
-      {
-        "files": ["**/*.test.ts", "**/*.test.js"],
-        "env": {
-          "jest/globals": true
+        {
+            "files": ["**/*.test.ts", "**/*.test.js"],
+            "env": {
+                "jest": true
+            }
         }
-      }
     ]
-  }
-  
+}

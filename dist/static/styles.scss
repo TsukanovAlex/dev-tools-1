@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'StratosSkyeng';
-    src: url(../fonts/StratosSkyeng.woff);
-    src: url(../fonts/StratosSkyeng.woff2);
+    src: url(../static/fonts/StratosSkyeng.woff);
+    src: url(../static/fonts/StratosSkyeng.woff2);
 }
 
 * {
@@ -9,6 +9,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'StratosSkyeng';
+    border: none;
 }
 
 body {

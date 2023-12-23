@@ -1,14 +1,14 @@
 import { createCardArray, renderFinal } from './option-component'
 import { renderPageChangeLevel } from '../main'
 
-export function renderGame(level) {
+export function renderGame(level:string) {
     const appEl = document.getElementById('app') as HTMLElement
     let firstCard: HTMLElement | null = null
     let secondCard: HTMLElement | null = null
     let clickable = true
     let finalTime = 0
     // Массив перемешанных карт
-    let cardArray = createCardArray(level)
+    const cardArray = createCardArray(level)
 
     const openedCardHtml = cardArray
         .map((item, index) => {
@@ -38,7 +38,7 @@ export function renderGame(level) {
     // Таймер
     let seconds = 0
     const timerEl = appEl.querySelector('#seconds') as HTMLElement
-    let timerInterval
+    let timerInterval: NodeJS.Timeout;
 
     // Обработчмк клика на кнопку "Начать заново"
     const startNewGameButton = appEl.querySelector(

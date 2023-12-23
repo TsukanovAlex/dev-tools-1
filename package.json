@@ -7,7 +7,7 @@
         "test": "jest",
         "build": "set NODE_ENV=production && webpack",
         "start": "webpack-dev-server --open",
-        "format": "prettier --write",
+        "format": "prettier --write ./script/**/*.ts",
         "lint:ts": "eslint ./script/**/*.ts",
         "lint:css": "stylelint ./static/**.css",
         "prepare": "husky install",
@@ -15,16 +15,15 @@
     },
     "husky": {
         "hooks": {
-          "pre-commit": "npm test" 
+            "pre-commit": "npm test"
         }
-      },
+    },
     "jest": {
         "testEnvironment": "jsdom",
         "transform": {
             "^.+\\.(ts|tsx)$": "babel-jest",
             "^.+\\.css$": "jest-css-modules-transform"
         },
-        
         "setupFilesAfterEnv": [
             "./jest.setup.js"
         ]
@@ -39,14 +38,15 @@
         "@testing-library/jest-dom": "^6.1.5",
         "@types/jest": "^29.5.10",
         "@types/testing-library__dom": "^7.5.0",
-        "@typescript-eslint/eslint-plugin": "^6.4.1",
-        "@typescript-eslint/parser": "^6.4.1",
+        "@typescript-eslint/eslint-plugin": "^6.15.0",
+        "@typescript-eslint/parser": "^6.15.0",
         "babel-jest": "^29.7.0",
         "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.8.1",
         "css-minimizer-webpack-plugin": "^5.0.1",
         "eslint": "^8.47.0",
         "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-jest": "^27.6.0",
         "eslint-plugin-prettier": "^5.0.0",
         "html-webpack-plugin": "^5.5.3",
         "husky": "^8.0.3",
