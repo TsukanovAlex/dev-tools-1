@@ -11,6 +11,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "StratosSkyeng";
+  border: none;
 }
 
 body {
@@ -377,7 +378,7 @@ main-box {
 
 .win-smille {
   border: none;
-  background-image: url(945b49dc7f1e116d9bab.png);
+  background-image: url(40f4c3d528f8cfee7362.png);
   background-size: cover;
   width: 96px;
   height: 96px;
@@ -387,7 +388,7 @@ main-box {
 
 .loose-smille {
   border: none;
-  background-image: url(c0f2cf2e882a6d3af1aa.png);
+  background-image: url(a686846e02bdffebf7d4.png);
   background-size: cover;
   width: 96px;
   height: 96px;
@@ -396,6 +397,20 @@ main-box {
 
 .game__transparent {
   opacity: 0.4;
+}
+
+.game-over-bg {
+  background: linear-gradient(to bottom, rgba(0, 73, 128, 0.9), rgba(0, 73, 128, 0.9)), url(552bd86ab99cf639a501.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-sizing: content-box;
+  box-shadow: none;
+  overflow: hidden;
+  background-origin: content-box;
+  width: 150vh;
+  margin: auto;
+  height: 100vh;
 }/*# sourceMappingURL=styles.css.map */
 
 /*# sourceMappingURL=main.css.map*/

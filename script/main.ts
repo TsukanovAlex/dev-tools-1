@@ -12,11 +12,11 @@ declare global {
 window.globalState = {
     level: '',
 }
-export var level
+export var level: string | undefined
 
 // рендер страницы с выбором уровня сложности
 export const renderPageChangeLevel = () => {
-    const appEl = document.getElementById('app');
+    const appEl = document.getElementById('app')
     if (appEl !== null) {
         const appHtml = `<div class="main" id="main-box">
     <h2 class="main__title">Выбери сложность</h2>
@@ -53,20 +53,18 @@ export const renderPageChangeLevel = () => {
     </div>
     <button id="start-button" class="main__button">Старт</button>
 </div>`
-    appEl.innerHTML = appHtml
-    const appElem = document.getElementById('app') as HTMLElement
-    appElem.classList.remove('game-over-bg')
-      }
-
+        appEl.innerHTML = appHtml
+        const appElem = document.getElementById('app') as HTMLElement
+        appElem.classList.remove('game-over-bg')
+    }
     const levelEl = document.querySelectorAll('.level-input')
-    
 
     // Обработчик клика на  все инпуты выбора уровня
     const inputEventListener = () => {
         levelEl.forEach((input) => {
             input.addEventListener('click', () => {
                 window.globalState.level = (input as HTMLElement).dataset.index
-                level = (input as HTMLElement).dataset.index
+                level = window.globalState.level || ''
                 console.log(level)
             })
         })

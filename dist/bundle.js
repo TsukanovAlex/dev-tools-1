@@ -82,7 +82,9 @@ function renderFinal(finalTime, gameStatus) {
     var finalPageHtml = "\n            <div class=\"final-result\">\n                <div class=\"final-result__status\">".concat(statusIcon, "</div>\n                <div class=\"final-result__status-text\">").concat(statusString, "</div>\n                <div class=\"final-result__time-text\">\u0417\u0430\u0442\u0440\u0430\u0447\u0435\u043D\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F:</div>\n                <div class=\"final-result__time\">").concat(timeString, "</div>\n                <button class=\"header-game-button\" id=\"startNewGameButtonEnd\">\u041D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E</button>\n            </div>\n        ");
     appEl.innerHTML = appEl.innerHTML + finalPageHtml;
     var gamePage = document.getElementById('game-table');
-    gamePage.classList.add('game__transparent');
+    gamePage.style.display = 'none';
+    var appElem = document.getElementById('app');
+    appElem.classList.add('game-over-bg');
     var startNewGameButton = document.getElementById('startNewGameButtonEnd');
     startNewGameButton.addEventListener('click', function () {
         (0,_main__WEBPACK_IMPORTED_MODULE_0__.renderPageChangeLevel)();
@@ -136,8 +138,6 @@ function renderGame(level) {
             return "<div class='card-item' data-index=".concat(index, "></div>");
         })
             .join('');
-        // (appEl.querySelector('.game-field') as HTMLElement).innerHTML =
-        //     closedCardHtml
         var gameFieldElement = appEl.querySelector('.game-field');
         if (gameFieldElement) {
             gameFieldElement.innerHTML = closedCardHtml;
@@ -169,7 +169,6 @@ function renderGame(level) {
                         setTimeout(function () {
                             if (firstCard && secondCard) {
                                 if (firstCard.className === secondCard.className) {
-                                    alert('Вы победили!');
                                     firstCard.classList.add('inactive');
                                     secondCard.classList.add('inactive');
                                     var inactiveCards = appEl.querySelectorAll('.card-item.inactive');
@@ -181,7 +180,6 @@ function renderGame(level) {
                                     }
                                 }
                                 else {
-                                    alert('Вы проиграли!');
                                     firstCard.classList.remove(firstCard.classList[1]);
                                     secondCard.classList.remove(secondCard.classList[1]);
                                     finalTime = seconds;
@@ -227,17 +225,16 @@ var renderPageChangeLevel = function () {
     if (appEl !== null) {
         var appHtml = "<div class=\"main\" id=\"main-box\">\n    <h2 class=\"main__title\">\u0412\u044B\u0431\u0435\u0440\u0438 \u0441\u043B\u043E\u0436\u043D\u043E\u0441\u0442\u044C</h2>\n    <div class=\"main__level-box\">\n        <input\n            type=\"radio\"\n            name=\"games\"\n            data-index=\"1\"\n            id=\"level-light\"\n            class=\"level-input\"\n            value=\"1\"\n        />\n        <label for=\"level-light\">1</label>\n\n        <input\n            type=\"radio\"\n            name=\"games\"\n            data-index=\"2\"\n            id=\"level-medium\"\n            class=\"level-input\"\n            value=\"2\"\n        />\n        <label for=\"level-medium\">2</label>\n\n        <input\n            type=\"radio\"\n            name=\"games\"\n            data-index=\"3\"\n            id=\"level-hard\"\n            class=\"level-input\"\n            value=\"3\"\n        />\n        <label for=\"level-hard\">3</label>\n    </div>\n    <button id=\"start-button\" class=\"main__button\">\u0421\u0442\u0430\u0440\u0442</button>\n</div>";
         appEl.innerHTML = appHtml;
+        var appElem = document.getElementById('app');
+        appElem.classList.remove('game-over-bg');
     }
     var levelEl = document.querySelectorAll('.level-input');
-    // const startButtonEl = document.getElementById(
-    //     'start-button',
-    // ) as HTMLButtonElement
     // Обработчик клика на  все инпуты выбора уровня
     var inputEventListener = function () {
         levelEl.forEach(function (input) {
             input.addEventListener('click', function () {
                 window.globalState.level = input.dataset.index;
-                level = input.dataset.index;
+                level = window.globalState.level || '';
                 console.log(level);
             });
         });
