@@ -26,7 +26,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   renderFinal: () => (/* binding */ renderFinal),
 /* harmony export */   shuffle: () => (/* binding */ shuffle)
 /* harmony export */ });
-/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../main */ "./script/main.ts");
+/* harmony import */ var _render_game_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./render-game-component */ "./script/components/render-game-component.ts");
+// import { renderPageChangeLevel } from '../main'
 
 // Перемешивает карты
 function shuffle(array) {
@@ -85,9 +86,9 @@ function renderFinal(finalTime, gameStatus) {
     gamePage.style.display = 'none';
     var appElem = document.getElementById('app');
     appElem.classList.add('game-over-bg');
-    var startNewGameButton = document.getElementById('startNewGameButtonEnd');
-    startNewGameButton.addEventListener('click', function () {
-        (0,_main__WEBPACK_IMPORTED_MODULE_0__.renderPageChangeLevel)();
+    var startNewGameButtonEnd = document.getElementById('startNewGameButtonEnd');
+    startNewGameButtonEnd.addEventListener('click', function () {
+        (0,_render_game_component__WEBPACK_IMPORTED_MODULE_0__.resetGame)();
     });
 }
 
@@ -102,18 +103,50 @@ function renderFinal(finalTime, gameStatus) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   renderGame: () => (/* binding */ renderGame)
+/* harmony export */   renderGame: () => (/* binding */ renderGame),
+/* harmony export */   resetGame: () => (/* binding */ resetGame),
+/* harmony export */   timerInterval: () => (/* binding */ timerInterval)
 /* harmony export */ });
 /* harmony import */ var _option_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./option-component */ "./script/components/option-component.ts");
 /* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../main */ "./script/main.ts");
 
 
+var firstCard = null;
+var secondCard = null;
+var clickable = true;
+var finalTime = 0;
+var seconds = 0;
+var timerInterval = null;
+function resetGame() {
+    var appEl = document.getElementById('app');
+    var gamePage = document.getElementById('game-table');
+    // Очищаем таймеры
+    if (timerInterval !== null) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+    // Сбрасываем все переменные
+    firstCard = null;
+    secondCard = null;
+    clickable = true;
+    finalTime = 0;
+    seconds = 0;
+    // Очищаем содержимое игрового поля
+    var gameFieldElement = appEl.querySelector('.game-field');
+    if (gameFieldElement) {
+        gameFieldElement.innerHTML = '';
+    }
+    // Возвращаем видимость игрового поля
+    gamePage.style.display = 'block';
+    // Удаляем класс с фона приложения
+    appEl.classList.remove('game-over-bg');
+    // Логи для отладки
+    console.log('Game reset.');
+    // Рендерим страницу выбора уровня
+    (0,_main__WEBPACK_IMPORTED_MODULE_1__.renderPageChangeLevel)();
+}
 function renderGame(level) {
     var appEl = document.getElementById('app');
-    var firstCard = null;
-    var secondCard = null;
-    var clickable = true;
-    var finalTime = 0;
     // Массив перемешанных карт
     var cardArray = (0,_option_component__WEBPACK_IMPORTED_MODULE_0__.createCardArray)(level);
     var openedCardHtml = cardArray
@@ -121,16 +154,14 @@ function renderGame(level) {
         return "<div class='card-item ".concat(item, "' data-index=").concat(index, "></div>");
     })
         .join('');
-    var appHtml = "\n    <div id='game-table'>\n    <header class=\"header center\">\n    <div class=\"header__timer-box\">\n    <div class=\"header__name-box\">\n    <p class=\"header__timer-name\">min </p>\n    <p class=\"header__timer-name\">sek</p>\n    </div>\n          <p class=\"header__timer\" id=\"seconds\">00.00</p>\n    </div>\n          <button class=\"header-game-button\" id=\"startNewGameButton\">\u041D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E</button>\n          </header>\n<section class=\"game-field\">\n    ".concat(openedCardHtml, "\n</section>\n</div>\n    ");
+    var appHtml = "\n        <div id='game-table'>\n            <header class=\"header center\">\n                <div class=\"header__timer-box\">\n                    <div class=\"header__name-box\">\n                        <p class=\"header__timer-name\">min </p>\n                        <p class=\"header__timer-name\">sek</p>\n                    </div>\n                    <p class=\"header__timer\" id=\"seconds\">00.00</p>\n                </div>\n                <button class=\"header-game-button\" id=\"startNewGameButton\">\u041D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E</button>\n            </header>\n            <section class=\"game-field\">\n                ".concat(openedCardHtml, "\n            </section>\n        </div>\n    ");
     appEl.innerHTML = appHtml;
     // Таймер
-    var seconds = 0;
     var timerEl = appEl.querySelector('#seconds');
-    var timerInterval;
-    // Обработчмк клика на кнопку "Начать заново"
+    // Обработчик клика на кнопку "Начать заново"
     var startNewGameButton = appEl.querySelector('#startNewGameButton');
     startNewGameButton.addEventListener('click', function () {
-        (0,_main__WEBPACK_IMPORTED_MODULE_1__.renderPageChangeLevel)();
+        resetGame();
     });
     setTimeout(function () {
         var closedCardHtml = cardArray
