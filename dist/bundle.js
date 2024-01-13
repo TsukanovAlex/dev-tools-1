@@ -116,33 +116,38 @@ var secondCard = null;
 var clickable = true;
 var finalTime = 0;
 var seconds = 0;
+var startButtonEnabled = true;
 var timerInterval = null;
+var timeoutId = null;
 function resetGame() {
     var appEl = document.getElementById('app');
     var gamePage = document.getElementById('game-table');
-    // Очищаем таймеры
+    // Очищаю таймеры
     if (timerInterval !== null) {
         clearInterval(timerInterval);
         timerInterval = null;
     }
-    // Сбрасываем все переменные
+    // Сбрасывваю таймаут
+    if (timeoutId !== null) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+    }
+    // Обнуляю переменные
     firstCard = null;
     secondCard = null;
     clickable = true;
     finalTime = 0;
     seconds = 0;
-    // Очищаем содержимое игрового поля
+    // Обнуляю игровой стол
     var gameFieldElement = appEl.querySelector('.game-field');
     if (gameFieldElement) {
         gameFieldElement.innerHTML = '';
     }
-    // Возвращаем видимость игрового поля
+    // блокирую ировое поле
     gamePage.style.display = 'block';
-    // Удаляем класс с фона приложения
+    // удаляю фон финала
     appEl.classList.remove('game-over-bg');
-    // Логи для отладки
     console.log('Game reset.');
-    // Рендерим страницу выбора уровня
     (0,_main__WEBPACK_IMPORTED_MODULE_1__.renderPageChangeLevel)();
 }
 function renderGame(level) {
@@ -161,7 +166,15 @@ function renderGame(level) {
     // Обработчик клика на кнопку "Начать заново"
     var startNewGameButton = appEl.querySelector('#startNewGameButton');
     startNewGameButton.addEventListener('click', function () {
-        resetGame();
+        if (startButtonEnabled) {
+            startButtonEnabled = false;
+            startNewGameButton.classList.add('button-disabled');
+            resetGame();
+            setTimeout(function () {
+                startButtonEnabled = true;
+                startNewGameButton.classList.remove('button-disabled');
+            }, 5000);
+        }
     });
     setTimeout(function () {
         var closedCardHtml = cardArray

@@ -6,6 +6,7 @@ let secondCard: HTMLElement | null = null
 let clickable = true
 let finalTime = 0
 let seconds = 0
+let startButtonEnabled = true
 
 export let timerInterval: NodeJS.Timeout | null = null
 let timeoutId: NodeJS.Timeout | null = null
@@ -87,7 +88,13 @@ export function renderGame(level: string) {
         '#startNewGameButton',
     ) as HTMLElement
     startNewGameButton.addEventListener('click', () => {
-        resetGame()
+        if (startButtonEnabled) {
+            startButtonEnabled = false
+            resetGame()
+            setTimeout(() => {
+                startButtonEnabled = true
+            }, 5000)
+        }
     })
 
     setTimeout(() => {
