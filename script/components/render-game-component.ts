@@ -6,7 +6,6 @@ let secondCard: HTMLElement | null = null
 let clickable = true
 let finalTime = 0
 let seconds = 0
-let startButtonEnabled = true
 
 export let timerInterval: NodeJS.Timeout | null = null
 let timeoutId: NodeJS.Timeout | null = null
@@ -71,7 +70,7 @@ export function renderGame(level: string) {
                     </div>
                     <p class="header__timer" id="seconds">00.00</p>
                 </div>
-                <button class="header-game-button" id="startNewGameButton">Начать заново</button>
+                <button class="header-game-button" id="startNewGameButton" disabled>Начать заново</button>
             </header>
             <section class="game-field">
                 ${openedCardHtml}
@@ -88,13 +87,7 @@ export function renderGame(level: string) {
         '#startNewGameButton',
     ) as HTMLElement
     startNewGameButton.addEventListener('click', () => {
-        if (startButtonEnabled) {
-            startButtonEnabled = false
-            resetGame()
-            setTimeout(() => {
-                startButtonEnabled = true
-            }, 5000)
-        }
+        resetGame()
     })
 
     setTimeout(() => {
@@ -173,5 +166,6 @@ export function renderGame(level: string) {
                 }
             })
         })
+        startNewGameButton.removeAttribute('disabled')
     }, 5000)
 }
