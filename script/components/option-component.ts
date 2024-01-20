@@ -1,4 +1,5 @@
-import { renderPageChangeLevel } from '../main'
+// import { renderPageChangeLevel } from '../main'
+import { resetGame } from './render-game-component'
 
 // Перемешивает карты
 export function shuffle(array: string[]) {
@@ -16,7 +17,7 @@ export function shuffle(array: string[]) {
 }
 
 // Создаем массив из карт
-export const createCardArray = (level:string) => {
+export const createCardArray = (level: string) => {
     let cardArray: string[] = []
     for (let index = 1; index < 37; index++) {
         cardArray.push(`card-item${index.toString()}`)
@@ -43,10 +44,11 @@ export const createCardArray = (level:string) => {
 
     return cardArray
 }
-// Завершение игры
 
-export function renderFinal(finalTime:number, gameStatus:string) {
+// Завершение игры
+export function renderFinal(finalTime: number, gameStatus: string) {
     const appEl = document.getElementById('app') as HTMLElement
+
     const minutes = Math.floor(finalTime / 60)
     const remainingSeconds = finalTime % 60
     const timeString = `${minutes
@@ -74,10 +76,10 @@ export function renderFinal(finalTime:number, gameStatus:string) {
     const appElem = document.getElementById('app') as HTMLElement
     appElem.classList.add('game-over-bg')
 
-    const startNewGameButton = document.getElementById(
+    const startNewGameButtonEnd = document.getElementById(
         'startNewGameButtonEnd',
     ) as HTMLElement
-    startNewGameButton.addEventListener('click', () => {
-        renderPageChangeLevel()
+    startNewGameButtonEnd.addEventListener('click', () => {
+        resetGame()
     })
 }
